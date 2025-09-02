@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Persona from "./persona";
+import Productos from "./consigna";
 
 export function Operator() {
   const [nums, setNums] = useState([1, 2, 3, 4, 5]);
@@ -8,29 +9,30 @@ export function Operator() {
     alumno: "Thiago",
   });
 
-  //arrow function
-  //const addNums = () => {
-    //setNums([0, ...nums, 6]);
-  //};
- 
+  // Agregar número consecutivo
   const addNums = () => {
-    setNums(prev => [...nro, nro[nro.length - 1] + 1]);
-  };  
+    setNums(prev => [...prev, prev[prev.length - 1] + 1]);
+  };
 
-  
+  // Actualizar persona
   const updateName = () => {
-    setPersona({ ...persona, name: "Miguel", edad: 80 });
-    console.log(persona);
+    setPersona(prev => ({ ...prev, name: "Miguel" }));
   };
 
   return (
     <>
+      <h3>Números:</h3>
       {nums.map((num, index) => (
         <p key={index}>{num}</p>
       ))}
-      <h3>Spread Operator</h3>
-      <button onClick={addNums}>agregar numeros</button>
-      <button onClick={updateName}>modificar persona</button>
+      <button onClick={addNums}>Agregar número</button>
+
+      <h3>Persona:</h3>
+      <Persona name={persona.name} />
+      <button onClick={updateName}>Modificar persona</button>
+
+      <h3>Productos con descuento:</h3>
+      <Productos />
     </>
   );
 }
