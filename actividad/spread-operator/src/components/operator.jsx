@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Persona from "./persona";
 
 export function Operator() {
   const [nums, setNums] = useState([1, 2, 3, 4, 5]);
@@ -8,10 +9,15 @@ export function Operator() {
   });
 
   //arrow function
+  //const addNums = () => {
+    //setNums([0, ...nums, 6]);
+  //};
+ 
   const addNums = () => {
-    setNums([0, ...nums, 6]);
-  };
+    setNums(prev => [...nro, nro[nro.length - 1] + 1]);
+  };  
 
+  
   const updateName = () => {
     setPersona({ ...persona, name: "Miguel", edad: 80 });
     console.log(persona);
